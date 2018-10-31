@@ -43,10 +43,7 @@ public class CarController {
 	
 	@GetMapping(value = "/{carId}")
 	private CarModel viewCar(@PathVariable ("carId") long carId, Model model) {
-		CarModel car = carService.getCarDetailById(carId).get();
-		car.setDealer(null);
-		
-		return car;
+		return carService.getCarDetailById(carId).get();
 	}
 	
 	@DeleteMapping
@@ -99,11 +96,6 @@ public class CarController {
 	
 	@GetMapping()
 	private List<CarModel> viewAllCar(Model model) {
-		List<CarModel> listCar = carService.allCars();
-		for (CarModel car : listCar) {
-			car.setDealer(null);
-		}
-		
-		return listCar;
+		return carService.allCars();
 	}
 }
